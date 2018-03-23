@@ -125,6 +125,11 @@
       return this;
     };
 
+    Idle.prototype.setAutoStart = function(boolean) {
+      this.autoStart = boolean;
+      return this;
+    };
+
     Idle.prototype.checkAway = function() {
       var activity, t;
       t = new Date().getTime();

@@ -107,6 +107,10 @@ class Idle
     @awayTimeout = parseInt ms, 10
     @
 
+  setAutoStart: (boolean) ->
+    @autoStart = boolean
+    @
+
   checkAway: () ->
     t = new Date().getTime()
     if (t < @awayTimestamp)
