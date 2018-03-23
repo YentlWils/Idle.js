@@ -25,6 +25,8 @@ class Idle
   @awayTimestamp: 0
   @awayTimer: null
 
+  @autoStart: true
+
   #events for monitoring user activity on the page
   @onAway: null
   @onAwayBack: null
@@ -43,6 +45,7 @@ class Idle
       @onAwayBack = options.onAwayBack
       @onVisible = options.onVisible
       @onHidden = options.onHidden
+      @autoStart = options.autoStart
 
     #object to be accessed in the events that will be called by window.
     activity = this
@@ -64,8 +67,9 @@ class Idle
       #trigger callback for the user coming back from being away
       if(@onAwayBack)
         @onAwayBack()
-      #reset the away timeout.
-      @start()
+      #reset the away timeout if wanted.
+      if(@autoStart)
+        @start()
     #ensure that the state is not away
     @isAway = false
     #return true for the event.

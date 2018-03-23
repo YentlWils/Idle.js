@@ -38,6 +38,8 @@
 
     Idle.awayTimer = null;
 
+    Idle.autoStart = true;
+
     Idle.onAway = null;
 
     Idle.onAwayBack = null;
@@ -54,6 +56,7 @@
         this.onAwayBack = options.onAwayBack;
         this.onVisible = options.onVisible;
         this.onHidden = options.onHidden;
+        this.autoStart = options.autoStart;
       }
       activity = this;
       activeMethod = function() {
@@ -75,7 +78,9 @@
         if (this.onAwayBack) {
           this.onAwayBack();
         }
-        this.start();
+        if (this.autoStart) {
+          this.start();
+        }
       }
       this.isAway = false;
       return true;
